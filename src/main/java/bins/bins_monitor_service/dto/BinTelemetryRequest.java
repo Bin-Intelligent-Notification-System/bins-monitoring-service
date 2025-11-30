@@ -2,10 +2,10 @@ package bins.bins_monitor_service.dto;
 
 import bins.bins_monitor_service.enums.BinStatus;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 
 public record BinTelemetryRequest(
-        @Positive(message = "Distance must be greater than zero")
+        @PositiveOrZero(message = "Distance must be zero or greater")
         double currentLevel,
 
         @NotNull(message = "Status is required")
