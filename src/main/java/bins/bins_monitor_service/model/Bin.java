@@ -1,6 +1,7 @@
 package bins.bins_monitor_service.model;
 
 import bins.bins_monitor_service.enums.BinPopularity;
+import bins.bins_monitor_service.enums.BinStatus;
 import bins.bins_monitor_service.enums.BinType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,13 +31,16 @@ public class Bin {
     private BinType type;
 
     @Enumerated(EnumType.STRING)
-    BinPopularity popularity;
+    private BinPopularity popularity;
 
-    private double totalCapacity;
+    private Double totalCapacity;
 
-    double currentLevel;
+    private Double currentLevel;
 
-    LocalDateTime lastUpdated;
+    private Double fillPercentage;
 
+    private LocalDateTime lastUpdated;
 
+    @Enumerated(EnumType.STRING)
+    private BinStatus binStatus;
 }

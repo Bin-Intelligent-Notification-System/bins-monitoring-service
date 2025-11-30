@@ -1,6 +1,7 @@
 package bins.bins_monitor_service.controller;
 
 import bins.bins_monitor_service.dto.BinResponse;
+import bins.bins_monitor_service.dto.BinTelemetryRequest;
 import bins.bins_monitor_service.dto.CreateBinRequest;
 import bins.bins_monitor_service.dto.UpdateBinRequest;
 import bins.bins_monitor_service.service.BinService;
@@ -42,6 +43,12 @@ public class BinController {
     @DeleteMapping("/delete/{binId}")
     public ResponseEntity<?> deleteUser(@PathVariable UUID binId){
         binService.deleteBin(binId);
+        return ResponseEntity.accepted().build();
+    }
+
+    @PostMapping("/telemetry/{binId}")
+    public ResponseEntity<?> addTelemetryData(@PathVariable UUID binId, @Valid @RequestBody BinTelemetryRequest binTelemetryRequest) {
+        binService.addTelemetryData(binId, binTelemetryRequest);
         return ResponseEntity.accepted().build();
     }
 }
